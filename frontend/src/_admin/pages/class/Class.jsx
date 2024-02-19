@@ -31,7 +31,6 @@ const Class = () => {
         const inputs = { classNumber, subjects, fullMarks };
         try {
             const { data } = apiRequest.post("/class", inputs);
-            console.log(data.status);
             alert("Class added!");
         } catch (error) {
             console.log(error);
