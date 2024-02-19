@@ -36,13 +36,16 @@ const AdminResult = () => {
     const handleGetResult = async (e) => {
         e.preventDefault();
         if (!inputs.exam._id || !inputs.class._id)
-            return console.log("Please select exam and class");
+            return alert("Please select exam and class");
 
         try {
             const { data } = await apiRequest.get(
                 `/result?examId=${inputs.exam._id}&classId=${inputs.class._id}&populate=studentId&sort=-percentage`
             );
             setFetchedResult(data.data);
+            if (data.data?.length === 0) {
+                alert("No data found!");
+            }
         } catch (error) {
             console.log(error);
             alert(error.response?.data?.message);
