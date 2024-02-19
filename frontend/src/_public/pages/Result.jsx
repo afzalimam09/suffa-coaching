@@ -18,12 +18,19 @@ const Result = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!examId || !regNo) return console.log("Please enter details");
-        const { data } = await apiRequest.get(
-            `/result/single?examId=${examId}&regNo=${regNo}`
-        );
-        console.log(data);
-        if (data.data?.length === 0) return console.log("No data found!");
-        setResultData(data.data[0]);
+        try {
+            const { data } = await apiRequest.get(
+                `/result/single?examId=${examId}&regNo=${regNo}`
+            );
+            if (data.data?.length === 0) {
+                alert("No data found!");
+                return console.log("No data found for this exam!");
+            }
+            setResultData(data.data[0]);
+        } catch (error) {
+            console.log(error.response?.data?.message);
+            alert(error.response?.data?.message);
+        }
     };
 
     return (
