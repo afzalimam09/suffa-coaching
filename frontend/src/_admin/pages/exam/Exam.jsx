@@ -28,6 +28,7 @@ const Exam = () => {
             alert("Exam added successfully!");
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
     };
 

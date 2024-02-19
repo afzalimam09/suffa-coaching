@@ -31,10 +31,10 @@ const UpdateResult = ({ fetchedResult, selectedClass }) => {
 
     const handleCalculateResult = (e) => {
         e.preventDefault();
-        if (!isSomethingChanged) return console.log("nothing changed!");
+        if (!isSomethingChanged) return alert("nothing changed!");
         const data = calculatePercentageAndGrade(subjectMarks, selectedClass);
         if (data.status === "fail") {
-            return console.log(data.message);
+            return alert(data.message);
         }
         setCalculatedResult(data);
         setIsReCalculated(true);
@@ -43,9 +43,9 @@ const UpdateResult = ({ fetchedResult, selectedClass }) => {
     const handleUpdateResult = async (e) => {
         e.preventDefault();
         if (!isSomethingChanged) {
-            return console.log("Nothing changed!");
+            return alert("Nothing changed!");
         } else if (!isReCalculated) {
-            return console.log("Please calculate!");
+            return alert("Please calculate!");
         }
         const dataToUpdate = {
             subjectMarks,
@@ -59,8 +59,10 @@ const UpdateResult = ({ fetchedResult, selectedClass }) => {
                 dataToUpdate
             );
             console.log(data);
+            alert("Result updated!");
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
     };
     return (

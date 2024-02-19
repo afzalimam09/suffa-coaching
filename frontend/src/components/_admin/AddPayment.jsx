@@ -16,13 +16,15 @@ const AddPayment = ({ student }) => {
         e.preventDefault();
         console.log(inputs);
         if (!inputs.amountPaid || !inputs.paymentDate)
-            return console.log("Enter all required value");
-        if (!clicked) return console.log("Please click to caluculate dues");
+            return alert("Enter all required value");
+        if (!clicked) return alert("Please click to caluculate dues");
         try {
             const { data } = await apiRequest.post("/payment", inputs);
             console.log(data);
+            alert("Payment added!");
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
     };
     const handleChange = (e) => {

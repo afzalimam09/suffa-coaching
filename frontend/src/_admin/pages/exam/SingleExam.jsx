@@ -25,6 +25,7 @@ const SingleExam = () => {
             setFetched(true);
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
     };
 
@@ -41,6 +42,7 @@ const SingleExam = () => {
                 setExamInfo(data.data);
             } catch (error) {
                 console.log(error);
+                alert(error.response?.data?.message);
             }
         };
         getExamData();

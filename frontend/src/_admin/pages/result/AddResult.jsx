@@ -41,7 +41,7 @@ const AddResult = () => {
         e.preventDefault();
         const data = calculatePercentageAndGrade(inputMarks, selected.class);
         if (data.status === "fail") {
-            return console.log(data.message);
+            return alert(data.message);
         }
         setCalculatedResult(data);
     };
@@ -55,6 +55,7 @@ const AddResult = () => {
             setFetchedResult(data.data[0]);
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
         setClicked(true);
     };
@@ -83,6 +84,7 @@ const AddResult = () => {
             alert("Result added!");
         } catch (error) {
             console.log(error);
+            alert(error.response?.data?.message);
         }
     };
 
