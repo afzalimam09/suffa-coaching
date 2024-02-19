@@ -1,0 +1,16 @@
+
+@media screen and (max-width: 600px) {
+    .form-res {
+        display: flex;
+        flex-direction: column;
+    }
+    .form-res div {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .result-res {
+        display: flex;
+        flex-direction: column;
+    }
+}
